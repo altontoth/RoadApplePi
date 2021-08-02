@@ -1,4 +1,7 @@
 # RoadApplePi 
+
+THIS PROJECT HAS BEEN CLONED FROM THE MASTER FOR MY OWN TINKERING AND WORK. USE AT YOUR OWN RISK!
+
 RoadApplePi is a simple to install system for your Raspberry Pi designed to record dashcam videos and engine information from your car in real-time, and then make it all accessable from an easy-to-use Web App that can be viewed on your smartphone or computer.
 
 Demonstration video: [https://www.youtube.com/watch?v=-G1HIgr2cvU](https://www.youtube.com/watch?v=-G1HIgr2cvU)
@@ -31,9 +34,9 @@ RoadApplePi is designed to work with as little or much as you have. Bare minimum
  2. From the command line, run:
 	```
 	sudo apt update && sudo apt install -y git
-	git clone https://github.com/JVital2013/RoadApplePi
+	git clone https://github.com/altontoth/RoadApplePi
 	cd RoadApplePi
-	./setup.sh
+	sudo ./setup.sh
 	sudo reboot
 	```
 	The setup script may take several hours to run, depending on your Raspberry Pi model
