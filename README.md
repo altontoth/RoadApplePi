@@ -45,6 +45,24 @@ SOFTWARE CURRENTLY RUNS ON STRETCH ONLY. YOU WILL NEED TO DOWNLOAD AN OLDER VERS
 	The setup script may take several hours to run, depending on your Raspberry Pi model
  3. On another device, go to `http://raspberrypi/`.
 	--Note: Your device hostname can be changed by running `sudo raspi-config` on your pi. I've changed mine to "roadapplepi". A feature to change this from the web app will be added in the future
+	
+	There seems to be a bug in the web interface that causes the ssid and password to not be saved to hostapd-rap.conf.
+
+    In the directory where you cloned RoadApplePi from Github, there's a hostapd-rap.conf file. Edit that (e.g. vi hostapd-rap.conf). Update the ssid and wpa_passphrase lines to whatever you'd like your access point config to be, then save the file.
+
+    Copyhostapd-rap.conf to the hostapd config directory: sudo cp hostapd-rap.conf /etc/hostapd
+
+    Test the config to make sure there aren't any errors: sudo /usr/sbin/hostapd /etc/hostapd/hostapd-rap.conf. Check on another device to make sure your access point network shows up, then hit ctrl+c to stop the command.
+
+    Restart hostapd. NOTE: the hostapd service is masked, so we have to unmask it before we can enable/start it.
+
+sudo systemctl stop hostapd
+sudo systemctl unmask hostapd
+sudo systemctl enable hostapd
+sudo systemctl start hostapd
+
+
+
  4. Put it into Access Point mode, specifying a network SSID and Password
  5. After verifying that you can connect to the newly created WiFi network, shut down your Pi and move it out to your car. Connect your webcam to the Pi and the OBDII reader to your car and power the Pi back on
  6. With your ignition in the "Run" position, go to `http://raspberrypi/` (or other hostname if you changed it). From the settings menu, pair your pi with the OBDII reader. Most of them use "1234" for the PIN.
